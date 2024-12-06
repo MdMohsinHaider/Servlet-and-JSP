@@ -24,7 +24,7 @@ public class UserInsertController implements Servlet {
         String gender = req.getParameter("gender");
         String dob = req.getParameter("userDob");
 
-        // print the data
+        // print the data coming from jsp file
         System.out.println("id : "+id+"\nEmail : "+email+"\nName : "+name+"\nGender : "+gender+"\nDate of Birth : "+dob);
     }
 
