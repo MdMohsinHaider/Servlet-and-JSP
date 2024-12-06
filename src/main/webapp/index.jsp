@@ -1,26 +1,36 @@
 <html>
-<body>
-    <h3>Registeration-Form</h3>
-    	<div>
-    		<form action="userRegister" method="get">
-    			<label>User-Id</label><br>
-    			<input type="number" placeholder="Enter user id" name="userId" ><br><br>
+    <head>
+        <meta charset="UTF-8">
+        <title>Servlet and JSP</title>
+        <!-- Link to external CSS -->
+        <link rel="stylesheet" href="<%= application.getContextPath() %>/css/style.css" />
+    </head>
+    <body>
+        <div class="form-container">
+            <h3>Registration Form</h3>
+            <form action="userRegister" method="get">
+                <label for="userId">User-Id</label><br>
+                <input type="number" placeholder="Enter user id" name="userId" id="userId"><br>
 
-    			<label>User-Name</label><br>
-    			<input type="text" placeholder="Enter user Name" name="userName" ><br><br>
+                <label for="userName">User-Name</label><br>
+                <input type="text" placeholder="Enter user name" name="userName" id="userName"><br>
 
-    			<label>User-Email</label><br>
-    			<input type="Email" placeholder="Enter user Email" name="userEmail" ><br><br>
+                <label for="userEmail">User-Email</label><br>
+                <input type="email" placeholder="Enter user email" name="userEmail" id="userEmail"><br>
 
-    			<label>User-DOB</label><br>
-    			<input type="date" name="userDob" ><br><br>
+                <label for="userDob">User-DOB</label><br>
+                <input type="date" name="userDob" id="userDob"><br>
 
-    			<label>User-Gender</label><br>
-    			<input type="radio" name="gender">Male
-    			<input type="radio" name="gender">Female<br><br>
-    			<input type="submit" name="register">
-
-    		</form>
-    	</div>
-</body>
+                <label>User-Gender</label><br>
+                <div class="gender-container">
+                    <label><input type="radio" name="gender" value="Male"> Male</label>
+                    <label><input type="radio" name="gender" value="Female"> Female</label>
+                </div>
+                <br>
+                <input type="submit" value="Register">
+            </form>
+        </div>
+        <!-- Link to external JavaScript -->
+        <script src="<%= application.getContextPath() %>/js/script.js"></script>
+    </body>
 </html>

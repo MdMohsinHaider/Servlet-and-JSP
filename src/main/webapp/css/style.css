@@ -1,0 +1,98 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 400% 400%;
+    animation: gradientShift 10s infinite;
+    color: white;
+}
+
+/* Animation for gradient effect */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Form Container */
+.form-container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 350px;
+    color: #333;
+}
+
+/* Form Labels */
+label {
+    font-weight: bold;
+    display: block;
+    margin: 10px 0 5px;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="date"],
+input[type="submit"] {
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+/* Focus Effect */
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus {
+    outline: none;
+    border: 2px solid #007BFF;
+}
+
+/* Submit Button */
+input[type="submit"] {
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+input[type="submit"]:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg, violet, indigo, blue, green, yellow, orange, red);
+}
+
+/* Gender Section */
+.gender-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Heading */
+h3 {
+    font-size: 24px;
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+}
