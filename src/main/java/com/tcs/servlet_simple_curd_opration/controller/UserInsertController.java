@@ -5,14 +5,18 @@ import jakarta.servlet.*;
 import java.io.IOException;
 
 public class UserInsertController implements Servlet {
+
+    private ServletConfig servletConfig;
+
     @Override
     public void init(ServletConfig config) throws ServletException {
-
+        this.servletConfig = config;
+        System.out.println("Initialized Servlet");
     }
 
     @Override
     public ServletConfig getServletConfig() {
-        return null;
+        return this.servletConfig;
     }
 
     @Override
@@ -30,11 +34,11 @@ public class UserInsertController implements Servlet {
 
     @Override
     public String getServletInfo() {
-        return "";
+        return "This is user insert Servlet, created by Author : Md Mohsin Haider";
     }
 
     @Override
     public void destroy() {
-
+        System.out.println("Servlet Destroy");
     }
 }
