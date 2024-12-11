@@ -1,10 +1,14 @@
 package com.tcs.servlet_simple_curd_opration.controller;
 
+import com.tcs.servlet_simple_curd_opration.service.UserService;
 import jakarta.servlet.*;
 
 import java.io.IOException;
 
 public class UserReadAllController implements Servlet {
+
+    UserService service = new UserService();
+
     private ServletConfig servletConfig;
 
     @Override
