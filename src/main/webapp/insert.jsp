@@ -21,6 +21,9 @@
                 <label for="userDob">User-DOB</label><br>
                 <input type="date" name="userDob" id="userDob"><br>
 
+                <label for="userPassword">User-Password</label><br>
+                <input type="password" placeholder="Enter user password" name="userPassword" id="userPassword"><br>
+
                 <label>User-Gender</label><br>
                 <div class="gender-container">
                     <label><input type="radio" name="gender" value="Male"> Male</label>

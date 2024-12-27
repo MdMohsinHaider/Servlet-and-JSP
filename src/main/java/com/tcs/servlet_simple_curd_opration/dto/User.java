@@ -7,6 +7,7 @@ public class User {
     private String user_id;
     private String user_name;
     private String user_email;
+    private String user_password;
     private String user_gender;
     private LocalDate user_dob;
 
@@ -15,32 +16,26 @@ public class User {
         super();
     }
 
-    public User(String user_id, String user_name, String user_email) {
+    public User(String msg){
+        System.err.println(msg);
+    }
+
+    public User(String user_email, String user_password) {
         this();
-        this.user_id = user_id;
-        this.user_name = user_name;
         this.user_email = user_email;
+        this.user_password = user_password;
     }
 
-    public User(String user_id, String user_name, String user_email, String user_gender) {
-        this(user_id,user_name,user_email);
-        this.user_gender = user_gender;
-    }
-
-    public User(String user_id, String user_name, String user_email, String user_gender, LocalDate user_dob) {
-       this(user_id,user_name,user_email,user_gender);
-       this.user_dob = user_dob;
-    }
-    // without id
-    public User(String user_name, String user_email, String user_gender, LocalDate user_dob) {
+    public User(String user_name, String user_email, String user_password, String user_gender, LocalDate user_dob) {
+        this(user_email,user_password);
         this.user_name = user_name;
-        this.user_email = user_email;
         this.user_gender = user_gender;
         this.user_dob = user_dob;
     }
 
-    public User(String msg){
-        System.err.println(msg);
+    public User(String user_id, String user_name, String user_email, String user_password, String user_gender, LocalDate user_dob) {
+        this(user_name, user_email, user_password, user_gender, user_dob);
+        this.user_id = user_id;
     }
 
     public String getUser_id() {
@@ -67,6 +62,14 @@ public class User {
         this.user_email = user_email;
     }
 
+    public String getUser_password() {
+        return user_password;
+    }
+
+    public void setUser_password(String user_password) {
+        this.user_password = user_password;
+    }
+
     public String getUser_gender() {
         return user_gender;
     }
@@ -87,12 +90,12 @@ public class User {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(user_id, user.user_id) && Objects.equals(user_name, user.user_name) && Objects.equals(user_email, user.user_email) && Objects.equals(user_gender, user.user_gender) && Objects.equals(user_dob, user.user_dob);
+        return Objects.equals(user_id, user.user_id) && Objects.equals(user_name, user.user_name) && Objects.equals(user_email, user.user_email) && Objects.equals(user_password, user.user_password) && Objects.equals(user_gender, user.user_gender) && Objects.equals(user_dob, user.user_dob);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(user_id, user_name, user_email, user_gender, user_dob);
+        return Objects.hash(user_id, user_name, user_email, user_password, user_gender, user_dob);
     }
 
     @Override
@@ -101,9 +104,9 @@ public class User {
                 "user_id='" + user_id + '\'' +
                 ", user_name='" + user_name + '\'' +
                 ", user_email='" + user_email + '\'' +
+                ", user_password='" + user_password + '\'' +
                 ", user_gender='" + user_gender + '\'' +
                 ", user_dob=" + user_dob +
                 '}';
     }
-
 }

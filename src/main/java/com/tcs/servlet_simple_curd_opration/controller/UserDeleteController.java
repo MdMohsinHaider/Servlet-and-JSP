@@ -26,6 +26,17 @@ public class UserDeleteController implements Servlet {
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
         System.out.println("Service method");
         String id = req.getParameter("userId");
+        int a = service.deleteUserService(id);
+
+        System.out.println("Response is : "+a);
+        RequestDispatcher dispatcher;
+        if (a>0){
+            dispatcher = req.getRequestDispatcher("success.jsp");
+        }
+        else {
+            dispatcher = req.getRequestDispatcher("warning.jsp");
+        }
+        dispatcher.forward(req, res);
 
         System.out.println(id);
     }

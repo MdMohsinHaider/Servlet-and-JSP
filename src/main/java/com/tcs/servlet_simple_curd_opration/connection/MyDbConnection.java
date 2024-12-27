@@ -11,7 +11,7 @@ public class MyDbConnection {
     public Connection getConnection(){
         try {
             DriverManager.registerDriver(new Driver());
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb","","");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/DB_NAME","root","root");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return null;

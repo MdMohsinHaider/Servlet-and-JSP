@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
@@ -20,12 +19,13 @@ public class UserDao {
     // insert user
     public int saveUserDao(User user){
         try {
-            CallableStatement callableStatement = connection.prepareCall("call saveUser(?,?,?,?,?)");
+            CallableStatement callableStatement = connection.prepareCall("call saveUser(?,?,?,?,?,?)");
             callableStatement.setString(1,user.getUser_id());
             callableStatement.setString(2,user.getUser_name());
             callableStatement.setString(3,user.getUser_email());
             callableStatement.setObject(4,user.getUser_dob());
             callableStatement.setString(5,user.getUser_gender());
+            callableStatement.setString(6,user.getUser_password());
 
             // return integer if insert any data then return > 0
             return callableStatement.executeUpdate();
@@ -67,8 +67,9 @@ public class UserDao {
             callableStatement.setString(1,userId);
             callableStatement.setString(2,user.getUser_name());
             callableStatement.setString(3,user.getUser_email());
-            callableStatement.setObject(4,user.getUser_dob());
-            callableStatement.setString(5,user.getUser_gender());
+            callableStatement.setString(4,user.getUser_password());
+            callableStatement.setObject(5,user.getUser_dob());
+            callableStatement.setString(6,user.getUser_gender());
 
             return callableStatement.executeUpdate();
         } catch (SQLException e) {
@@ -93,9 +94,10 @@ public class UserDao {
                 String u_id = resultSet.getString("userId");
                 String u_name = resultSet.getString("userName");
                 String u_email = resultSet.getString("userEmail");
+                String u_password = resultSet.getString("user_Password");
                 String u_gender = resultSet.getString("userGender");
                 LocalDate u_dob = resultSet.getDate("userDateOfBirth").toLocalDate();
-                User user = new User(u_id,u_name,u_email,u_gender,u_dob);
+                User user = new User(u_id,u_name,u_email,u_password,u_gender,u_dob);
                 userList.add(user);
             }
             return userList;
@@ -120,11 +122,43 @@ public class UserDao {
             ResultSet resultSet = callableStatement.executeQuery();
             User user= null;
             if (resultSet.next()){
+                String u_id = resultSet.getString("userId");
                 String u_name = resultSet.getString("userName");
                 String u_email = resultSet.getString("userEmail");
+                String u_password = resultSet.getString("user_Password");
                 String u_gender = resultSet.getString("userGender");
                 LocalDate u_dob = resultSet.getDate("userDateOfBirth").toLocalDate();
-                user = new User(u_name,u_email,u_gender,u_dob);
+                user = new User(u_id,u_name,u_email,u_password,u_gender,u_dob);
+            }
+            return user;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            return new User("user null value..! data not found");
+        }finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+    }
+
+
+    // Read User by id.
+    public User readUserByEmailDao(String userEmail){
+        try {
+            CallableStatement callableStatement = connection.prepareCall("call ");
+            callableStatement.setString(1,userEmail);
+            ResultSet resultSet = callableStatement.executeQuery();
+            User user= null;
+            if (resultSet.next()){
+                String u_id = resultSet.getString("userId");
+                String u_name = resultSet.getString("userName");
+                String u_email = resultSet.getString("userEmail");
+                String u_password = resultSet.getString("user_Password");
+                String u_gender = resultSet.getString("userGender");
+                LocalDate u_dob = resultSet.getDate("userDateOfBirth").toLocalDate();
+                user = new User(u_id,u_name,u_email,u_password,u_gender,u_dob);
             }
             return user;
         } catch (SQLException e) {

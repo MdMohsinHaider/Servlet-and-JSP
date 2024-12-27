@@ -27,12 +27,18 @@ public class UserUpdateController implements Servlet {
         System.out.println("Service method");
         String id = req.getParameter("userId");
         String email = req.getParameter("userEmail");
+        String password = req.getParameter("password");
         String name = req.getParameter("userName");
         String gender = req.getParameter("gender");
         String dob = req.getParameter("userDob");
 
         // print the data coming from jsp file
-        System.out.println("id : "+id+"\nEmail : "+email+"\nName : "+name+"\nGender : "+gender+"\nDate of Birth : "+dob);
+        System.out.println("id : "+id+
+                "\nEmail : "+email+
+                "\nPassword : "+password+
+                "\nName : "+name+
+                "\nGender : "+gender+
+                "\nDate of Birth : "+dob);
     }
 
     @Override

@@ -43,7 +43,7 @@
         color: #555;
     }
 
-    input[type="text"], input[type="email"], input[type="number"], input[type="date"], select {
+    input[type="text"], input[type="email"], input[type="number"], input[type="date"], input[type="password"], select {
         margin-bottom: 15px;
         padding: 10px;
         border: 1px solid #ddd;
@@ -74,6 +74,7 @@
         const userEmail = document.forms["registrationForm"]["userEmail"].value;
         const userDob = document.forms["registrationForm"]["userDob"].value;
         const gender = document.forms["registrationForm"]["gender"].value;
+        const password = document.forms["registrationForm"]["password"].value;
 
         if (!userId) {
             alert("User ID must be filled out.");
@@ -101,13 +102,18 @@
             return false;
         }
 
+        if (!password || password.length < 6) {
+            alert("Password must be at least 6 characters long.");
+            return false;
+        }
+
         return true;
     }
 </script>
 </head>
 <body>
     <div class="form-container">
-        <h3>Update User By user Id</h3>
+        <h3>Update User By User ID</h3>
         <form name="registrationForm" action="userUpdate" method="get" onsubmit="return validateForm()">
             <label>User ID</label>
             <input type="number" placeholder="Enter previous user id" name="userId">
@@ -118,6 +124,9 @@
             <label>Update Email</label>
             <input type="email" placeholder="Enter new email" name="userEmail">
 
+            <label>Update Password</label>
+            <input type="password" placeholder="Enter new password" name="password">
+
             <label>Update DOB</label>
             <input type="date" name="userDob">
 
@@ -127,6 +136,7 @@
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select>
+
             <input type="submit" value="Update">
         </form>
     </div>
